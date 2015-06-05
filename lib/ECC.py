@@ -1,4 +1,4 @@
-from utils import modular_inverse
+from .utils import modular_inverse
 
 
 class ElitpicCurve(object):

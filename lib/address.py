@@ -1,4 +1,7 @@
-from ECC import Secp256k1
+import binascii
+import hashlib
+
+from .ECC import Secp256k1
 
 
 class BitcoinAddress(object):
@@ -22,8 +25,6 @@ class BitcoinAddress(object):
     def address(self):
         # TODO: try to avoid extra libs
         # TODO: add missing ones to requirements
-        import binascii
-        import hashlib
         try:
             from Crypto.Hash.RIPEMD import RIPEMD160Hash as RIPEMD160
         except ImportError:
