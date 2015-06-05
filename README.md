@@ -1,5 +1,7 @@
 ## btcutils for laplata.py!
 
+*IMPORTANT: do not use for production!*
+
 
 # Installation
 ```
