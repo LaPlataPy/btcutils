@@ -1,9 +1,5 @@
 
 
-def hexlify(num):
-    pass
-
-
 def modular_inverse(a, n):
     """
     Used for division in elliptic curves. Very important in RSA/ECDSA algorithms.
