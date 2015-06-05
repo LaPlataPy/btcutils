@@ -1,6 +1,13 @@
 import binascii
 import hashlib
 
+try:
+    from Crypto.Hash.RIPEMD import RIPEMD160Hash as RIPEMD160
+except ImportError:
+    #changed in 2.71a
+    from Crypto.Hash import RIPEMD160
+    RIPEMD160 = RIPEMD160.new
+
 from .ECC import Secp256k1
 
 
@@ -23,15 +30,6 @@ class BitcoinAddress(object):
 
     @property
     def address(self):
-        # TODO: try to avoid extra libs
-        # TODO: add missing ones to requirements
-        try:
-            from Crypto.Hash.RIPEMD import RIPEMD160Hash as RIPEMD160
-        except ImportError:
-            #changed in 2.71a
-            from Crypto.Hash import RIPEMD160
-            RIPEMD160 = RIPEMD160.new
-
         pko = self.public_compressed
         pubkey = binascii.hexlify(pko)
         pubkey2 = hashlib.sha256(binascii.unhexlify('04' + pubkey)).hexdigest()
